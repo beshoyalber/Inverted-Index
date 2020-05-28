@@ -54,8 +54,9 @@ class Trie:
 
     def get_ids(self, key):
         if not self.search(key):
-            return ("Word not found!")
+            return ( "Word not found!")
         return self.search(key)
+
 
 list_1 = []
 xmlFile = ""
@@ -81,7 +82,7 @@ def main():
         file_id = int(file.replace('.txt', ''), 10)
         print(file_id)
 
-        with codecs.open("C:\\Users\\BoshBosh\\Desktop\\DS\\questions\\" + file, "r", encoding='utf-8', errors='ignore') as file_1:
+        with codecs.open(xmlFile + "/" + file, "r", encoding='utf-8', errors='ignore') as file_1:
             file_con = file_1.read()
             for x in file_con:
                 if not x in accepted_list:
@@ -94,8 +95,10 @@ def main():
 
     while True:
         input_search = input("Enter a word: ")
-        output = t.get_ids(input_search.lower())
-        print(output)
+        output = list(t.get_ids(input_search.lower()))
+        output_2 = len(t.get_ids(input_search.lower()))
+        print (f'Number of files containing this word = {output_2}')
+        print(f'These files are: {output}')
 
 if __name__ == '__main__':
     main()
